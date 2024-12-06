@@ -30,6 +30,7 @@ public class Main {
            System.out.println("3. Keluar");
            System.out.print("Pilih menu : ");
            pilihMenu = input.nextInt();
+           input.nextLine();
            
            if (pilihMenu == 1) {
                 System.out.print("Masukkan nama pelanggan : ");
@@ -37,7 +38,10 @@ public class Main {
                 System.out.print("Masukkan nomor meja : ");
                 noMeja[index] = input.nextInt();
 
-                
+                System.out.println("==== MENU KAFE ====");
+                for (int i = 0; i < menu.length; i++) {
+                    System.out.println((i+1) + ". " + menu[i] + " - " + "Rp " + harga[i]);
+                }   
            }
            else if (pilihMenu == 2) {
             
