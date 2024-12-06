@@ -4,8 +4,25 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int pilihMenu, nomorMeja;
-        String namaPelanggan;
+        int pilihMenu;
+        String namaPelanggan[] = new String[10];
+        int noMeja[] = new int[10];
+
+        String menu[] = {
+            "Kopi Hitam",
+            "Latte",
+            "Teh Tarik",
+            "Mie Goreng"
+        };
+
+        int harga[] = {
+            15000,
+            22000,
+            12000,
+            18000
+        };
+
+        int index = 0;
         do {
            System.out.println("==== MENU UTAMA ====");
            System.out.println("1. Tambahkan Pesanan"); 
@@ -15,10 +32,12 @@ public class Main {
            pilihMenu = input.nextInt();
            
            if (pilihMenu == 1) {
-            System.out.print("Masukkan nama pelanggan : ");
-            namaPelanggan = input.nextLine();
-            System.out.print("Masukkan nomor meja : ");
-            nomorMeja = input.nextInt();
+                System.out.print("Masukkan nama pelanggan : ");
+                namaPelanggan[index] = input.nextLine();
+                System.out.print("Masukkan nomor meja : ");
+                noMeja[index] = input.nextInt();
+
+                
            }
            else if (pilihMenu == 2) {
             
