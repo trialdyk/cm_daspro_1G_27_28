@@ -5,8 +5,11 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int pilihMenu;
-        String namaPelanggan[] = new String[10];
-        int noMeja[] = new int[10];
+        int indexPesanan = 0;
+        String namaPelanggan[] = new String[100];
+        int noMeja[] = new int[100];
+        int menuPesanan[][] = new int[100][100];
+        int jumlahItem[][] = new int[100][100];
 
         String menu[] = {
             "Kopi Hitam",
@@ -22,7 +25,6 @@ public class Main {
             18000
         };
 
-        int index = 0;
         do {
            System.out.println("==== MENU UTAMA ====");
            System.out.println("1. Tambahkan Pesanan"); 
@@ -34,14 +36,51 @@ public class Main {
            
            if (pilihMenu == 1) {
                 System.out.print("Masukkan nama pelanggan : ");
-                namaPelanggan[index] = input.nextLine();
+                namaPelanggan[indexPesanan] = input.nextLine();
                 System.out.print("Masukkan nomor meja : ");
-                noMeja[index] = input.nextInt();
+                noMeja[indexPesanan] = input.nextInt();
 
                 System.out.println("==== MENU KAFE ====");
                 for (int i = 0; i < menu.length; i++) {
                     System.out.println((i+1) + ". " + menu[i] + " - " + "Rp " + harga[i]);
-                }   
+                }
+                System.out.println();
+                
+                int i = 0;
+                int totalHarga = 0;
+                while(true){
+
+                    
+                    System.out.print("Pilih Menu,(Masukkan Nomer Menu,Masukkan 0 untuk selesai) : ");
+                    int menuYangDipilih = input.nextInt();
+
+                    if(menuYangDipilih < 0 || menuYangDipilih > menu.length){
+                        System.out.println("Nomer Menu tidak tersedia");
+                        break;
+                    }
+
+                    if(menuYangDipilih == 0){
+                        break;
+                    }
+
+                    System.out.print("Masukkan Jumlah Item Untuk "+menu[menuYangDipilih-1]+" : ");
+                    int jumlahItemMenu = input.nextInt();
+                    if(jumlahItemMenu < 0){
+                        System.out.println("Jumlah Item tidak boleh negatif");
+                        jumlahItemMenu = 0;
+                        break;
+                    }
+
+                    int hargaPesanan = harga[menuYangDipilih-1] * jumlahItemMenu;
+                    totalHarga += hargaPesanan;
+
+                    menuPesanan[indexPesanan][i] = menuYangDipilih;
+                    jumlahItem[indexPesanan][i] = jumlahItemMenu;
+                    i++;
+                }
+                System.out.println("Pesanan Berhasil Ditambahkan");
+                System.out.println("Total Harga Pesanan : " + totalHarga);
+                indexPesanan++;
            }
            else if (pilihMenu == 2) {
             
