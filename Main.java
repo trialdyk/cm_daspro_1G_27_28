@@ -83,7 +83,29 @@ public class Main {
                 indexPesanan++;
            }
            else if (pilihMenu == 2) {
-            
+            System.out.println("===== MENU UTAMA =====");
+            for (int i = 0; i < indexPesanan; i++) {
+                System.out.println("Nama Pelanggan: " + namaPelanggan[i]);
+                System.out.println("Nomor Meja: " + noMeja[i]);
+                System.out.println("Detail Pesanan: ");
+                
+                int totalHargaSemua = 0;
+
+                for (int j = 0; j < menuPesanan[i].length; j++) {
+                    if (menuPesanan[i][j] != 0) {
+                        int menuPilihan = menuPesanan[i][j] - 1;
+                        int jumlahPilihan = jumlahItem[i][j];
+                        int hargaPesanan = harga[menuPilihan] * jumlahPilihan;
+                        
+                        totalHargaSemua += hargaPesanan;
+
+                        System.out.println("- " + menu[menuPilihan] + " X " + jumlahPilihan + " = Rp " + hargaPesanan);
+                        
+                    }
+                }
+                System.out.println("Total Harga Pesanan : Rp. " + totalHargaSemua);
+                System.out.println("----------------------------------");
+            }
            }
            else if (pilihMenu == 3) {
             break;
